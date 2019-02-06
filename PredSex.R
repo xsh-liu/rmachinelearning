@@ -30,7 +30,7 @@ cutoff <- seq(61,70)
 accuracy3 <- map_dbl(cutoff, function(x){
   y_hat <- ifelse(train_set$height > x, "Male", "Female") %>%
         factor(levels = levels(test_set$sex))
-        mean(y_hat == train_set$sex)
+        F_meas(data = y_hat, reference = factor(train_set$sex))
 })
 
 plot(accuracy3)
